@@ -7,6 +7,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+// This comment for model entity in student class
+
 @Entity
 @Table(name="students")
 public class Student {
