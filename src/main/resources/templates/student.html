@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http:www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Student Details</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+</head>
+<body>
+ <div class="row" >
+    <div class="col-lg-8 col-md-8 col-sm-8 container justify-conetent-center card">
+          <div class="card-body"></div>          
+             <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+               <!-- Bran -->
+               <a class="navbar-brand" href="#">Student Management System</a>
+               <!-- Toggler/collapsibe button--> 
+               <button class="navbar-toggler" type="button" data-toggle="collapse" 
+               data-target="#collapsibleNavbar">
+               <span class="navbar-toggler-icon"></span>
+               </button>
+         <!--navbar links-->        
+         <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+              <li class="nav-item"><a class="nav-link" th:href="@{student}">Student Management</a></li>
+          </ul>
+         </div>
+</nav>
+	<div class="container">
+	<div class="text-center"><h4 class=text-center>Students Details</h4></div>
+	<div class="row">
+	<div class="col-lg-3">
+	<a th:href="@{student/new}" class="btn btn-primary btn-sm mb-3">Add Student</a></div>
+	</div>
+		<table class="table table-striped table-border">
+			<thead>
+				<tr>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Student Email</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="studentObject:${student} ">
+					<td th:text="${studentObject.firstname}"></td>
+					<td th:text="${studentObject.lastname}"></td>
+					<td th:text="${studentObject.email}"></td>
+					<td><a th:href="@{student/edit/{id}(id=${studentObject.id})}" class="btn btn-info">Update</a></td>
+					<td><a th:href="@{student/{id} (id=${studentObject.id}) }" class="btn btn-danger">Delete</a></td>
+			  </tr>
+			</tbody>
+		  </table>
+	    </div>
+	  </div>
+	</div>		
+  </body>
+</html>
